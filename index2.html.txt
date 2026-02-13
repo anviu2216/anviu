@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine Kannama ❤️</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(to right,#ff9a9e,#fad0c4);
+    overflow-x:hidden;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#yesBtn{
+    background:#ff4da6;
+    color:white;
+}
+
+#noBtn{
+    background:#888;
+    color:white;
+    position:absolute;
+}
+
+.hidden{
+    display:none;
+}
+
+.gifts{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.box{
+    width:120px;
+    height:120px;
+    background:white;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.box:hover{
+    transform:scale(1.1);
+}
+
+.collage{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap:10px;
+    width:85%;
+    margin:30px auto;
+}
+
+.collage img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.letter{
+    width:60%;
+    margin:20px auto;
+    padding:20px;
+    background:white;
+    border-radius:15px;
+    text-align:left;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.message-card{
+    width:60%;
+    margin:30px auto;
+    padding:25px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<img src="bubu1.gif" width="180">
+
+<h2>Will you be my Valentine bubbu gaadu? ❤️</h2>
+
+<div id="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<!-- GIF Section -->
+<div id="gifSection" class="hidden">
+    <h3>Ya I knew 💕 neeku vere option ledhu kadha 🙈</h3>
+    <img src="bubu2.gif" width="140">
+</div>
+
+<!-- Gift Section -->
+<div id="giftSection" class="hidden">
+    <h3>This is for you 🎁</h3>
+    <div class="gifts">
+        <div class="box" onclick="openGift1()">Gift 1</div>
+        <div class="box" onclick="openGift2()">Gift 2</div>
+        <div class="box" onclick="openGift3()">Gift 3</div>
+    </div>
+</div>
+
+<div id="content"></div>
+
+<script>
+
+// Elements
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const buttons = document.getElementById("buttons");
+const gifSection = document.getElementById("gifSection");
+const giftSection = document.getElementById("giftSection");
+
+// Move NO button randomly
+function moveButton(){
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// YES click
+yesBtn.addEventListener("click", function(){
+
+    buttons.style.display = "none";
+    gifSection.classList.remove("hidden");
+
+    setTimeout(function(){
+        giftSection.classList.remove("hidden");
+    },3000);
+
+});
+
+// Gift 1
+function openGift1(){
+    document.getElementById("content").innerHTML =
+    `<div class="letter">
+    <h3>kutty gaadu 💖</h3>
+    <p>Nuvvu naa life lo ochinappati nunchi everything beautiful ga ayyindi.</p>
+    <p>Nee navvu naa strength. Nee allari naa happiness.</p>
+    <p>Nee caring and nee support naaku oka energy isthundhi ❤️</p>
+    <p> Naatho ilage life long untaava Kannama❤️</p>
+    </div>`;
+}
+
+// ✅ Gift 2 – Romantic Message
+function openGift2(){
+    document.getElementById("content").innerHTML =
+    `<div class="message-card">
+        <h2>For My Kannama 💕</h2>
+        <p>
+       bubu gaadu nv natho unte nen edhaina face chesi ninnu happy ga chuskunta manam fight chesinapudalla
+        nene endhuku thaguthano thelsaa nv dull ga unte nen chudalenu kabbati  </p>
+        <p>
+       nee navvu nee eyes chusthu life motham gadipeyachu bubbu thalli ❤️
+        </p>
+        <p>
+        I am lucky to have you 💖
+        Happy valantine Srimathi garu 
+        </p>
+    </div>`;
+}
+
+// Gift 3
+function openGift3(){
+    document.getElementById("content").innerHTML =
+    `<div class="collage">
+        <img src="pic1.jpg">
+        <img src="pic2.jpg">
+        <img src="pic3.jpg">
+        <img src="pic4.jpg">
+        <img src="pic5.jpg">
+        <img src="pic6.jpg">
+    </div>`;
+}
+
+</script>
+
+</body>
+</html>
